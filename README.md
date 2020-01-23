@@ -6,7 +6,8 @@ See [here](doc/how-does-mobaxterm-encrypt-password.md)
 
 ## 2. How to use?
 
-* Make sure you have Python3 and have `pycryptodome` installed.
+* Make sure you have Python3 and have `pycryptodomex` installed.
+`pip install pycryptodomex`
 
 ```
 Usage:

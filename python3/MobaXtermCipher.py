@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
+# pip install pycryptodomex
 import sys, os, platform, random, base64
-from Crypto.Hash import SHA512
-from Crypto.Cipher import AES
+from Cryptodome.Hash import SHA512
+from Cryptodome.Cipher import AES
 
 class MobaXtermCrypto:
 
