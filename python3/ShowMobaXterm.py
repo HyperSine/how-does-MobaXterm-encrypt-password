@@ -170,7 +170,7 @@ def WinRegistryReadValue(Root, SubKey: str, ValueName: str, ExpectValueType: int
 
 if len(sys.argv) == 2:
     cipher = MobaXtermCryptoSafe(
-        sys.argv[1].encode('ansi')
+        sys.argv[1].encode("utf8","ignore")
     )
 else:
     Value, ValueType = winreg.QueryValueEx(
@@ -182,9 +182,9 @@ else:
     ); assert(ValueType == winreg.REG_SZ)
 
     cipher = MobaXtermCrypto(
-        platform.node().encode('ansi'), 
-        os.getlogin().encode('ansi'), 
-        Value.encode('ansi')
+        platform.node().encode("utf8","ignore"), 
+        os.getlogin().encode("utf8","ignore"), 
+        Value.encode("utf8","ignore")
     )
 
 try:
@@ -201,7 +201,7 @@ try:
 
             CredentialPassword = cipher.DecryptCredential(
                 CredentialPassword
-            ).decode('ansi')
+            ).decode("utf8","ignore")
 
             print('[*] Name:     %s' % ValueName)
             print('[*] Username: %s' % CredentialUsername)
@@ -227,10 +227,8 @@ try:
                 ConnUsername = ConnUsername.split(':')[-1]
             
             ConnPassword = cipher.DecryptPassword(
-                Value, 
-                ConnHostname.encode('ansi'), 
-                ConnUsername.encode('ansi')
-            ).decode('ansi')
+                Value
+            ).decode("utf8","ignore")
 
             print('[*] Name:     %s' % ValueName)
             print('[*] Password: %s' % ConnPassword)
